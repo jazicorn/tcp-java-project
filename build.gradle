@@ -50,6 +50,8 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 dependencyManagement {
@@ -60,4 +62,10 @@ dependencyManagement {
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+	testLogging.showStandardStreams = true
+
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }
